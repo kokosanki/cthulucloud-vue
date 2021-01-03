@@ -4,10 +4,12 @@
        <div></div>
         <v-btn @click="createCharacter">Create a character</v-btn>
         <createCharacterModal @close="closeModal" :isModalActive="isModalActive"/>
+        {{characters}}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import createCharacterModal from '@/components/createCharacterModal.vue'
 
 export default {
@@ -19,6 +21,13 @@ export default {
     return {
       isModalActive: false
     }
+  },
+  computed: {
+    // mix the getters into computed with object spread operator
+    ...mapGetters([
+      'characters'
+      // ...
+    ])
   },
   methods: {
     createCharacter () {

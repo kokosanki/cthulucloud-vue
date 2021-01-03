@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   props: {
     isModalActive: {
@@ -78,8 +80,16 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'addCharacter'
+    ]),
     createCharacter () {
       console.log(this.name, this.gender, this.race)
+      this.addCharacter({
+        name: this.name,
+        gender: this.gender,
+        race: this.race
+      })
       this.closeModal()
     },
     closeModal () {
