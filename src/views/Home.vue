@@ -3,31 +3,25 @@
        style="height: calc(100vh - 56px)">
        <div></div>
         <v-btn @click="createCharacter">Create a character</v-btn>
+        <characters-list />
         <createCharacterModal @close="closeModal" :isModalActive="isModalActive"/>
-        {{characters}}
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import createCharacterModal from '@/components/createCharacterModal.vue'
+import charactersList from '@/components/charactersList.vue'
 
 export default {
   name: 'Home',
   components: {
-    createCharacterModal
+    createCharacterModal,
+    charactersList
   },
   data () {
     return {
       isModalActive: false
     }
-  },
-  computed: {
-    // mix the getters into computed with object spread operator
-    ...mapGetters([
-      'characters'
-      // ...
-    ])
   },
   methods: {
     createCharacter () {

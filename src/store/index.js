@@ -5,7 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    characters: []
+    characters: [
+      {
+        name: 'Random',
+        gender: 'random',
+        race: 'random'
+      }
+    ]
   },
   getters: {
     characters: state => {
